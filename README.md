@@ -28,9 +28,6 @@ You can download all dataset from pan.baidu.com. The links are listed as follows
 
 - [MIRFLICKR_deep.mat](https://pan.baidu.com/s/1lApMnVnnyigF5r-ZyaXF1w) Password: ntrf
 
-- [NUSWIDE21_deep.mat](https://pan.baidu.com/s/1nVVhIuJe2xEl_2eRU6tMeA) Password: smpp
-
-
 ### 3. Run demo
 
 Run main_demo.m.
