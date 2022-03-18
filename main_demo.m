@@ -8,7 +8,6 @@ if ~isdir(result_URL)
 end
 
 db = {'MIRFLICKR','IAPRTC-12','NUSWIDE10'};
-%hashmethods = {'SCM-seq','DCH','FDCH','SCRATCH','LCMFH','DLFH','SRLCH','FCMH'};
 hashmethods = {'FCMH'};
 loopnbits = [8 16 32 64 128];
 
@@ -17,7 +16,7 @@ param.top_K = 2000;
 param.pr_ind = [1:50:1000,1001];
 param.pn_pos = [1:100:2000,2000];
 
-for dbi = 1%      :length(db)
+for dbi = 1      :length(db)
     db_name = db{dbi}; param.db_name = db_name;
     
     % load dataset
@@ -80,47 +79,7 @@ for dbi = 1%      :length(db)
                     OURparam.beta1 = 10; OURparam.beta2 = 10;
                     OURparam.max_iter = 5; OURparam.gamma = 0.1;  OURparam.xi = 1;
                     eva_info_ = evaluate_FCMH(XTrain,YTrain,LTrain,XTest,YTest,LTest,OURparam);
-                case 'SCM-seq'
-                    fprintf('......%s start...... \n\n', 'SCM-seq');
-                    SCM_seqparam = param;
-                    eva_info_ =evaluate_SCM_seq(XTrain,YTrain,LTrain,XTest,YTest,LTest,SCM_seqparam);
-                case 'SMFH'
-                    fprintf('......%s start...... \n\n', 'SMFH');
-                    SMFHparam = param;
-                    eva_info_ =evaluate_SMFH(XTrain,YTrain,LTrain,XTest,YTest,LTest,SMFHparam);
-                case 'DCH'
-                    fprintf('......%s start...... \n\n', 'DCH');
-                    DCHparam = param;
-                    eva_info_ = evaluate_DCH(XTrain,YTrain,LTrain,XTest,YTest,LTest,DCHparam);
-                case 'SRSH'
-                    fprintf('......%s start...... \n\n', 'SRSH');
-                    SRSHparam = param;
-                    eva_info_ =evaluate_SRSH(XTrain,YTrain,LTrain,XTest,YTest,LTest,SRSHparam);
-                case 'MDBE'
-                    fprintf('......%s start...... \n\n', 'MDBE');
-                    MDBEparam = param;
-                    eva_info_ =evaluate_MDBE(XTrain,YTrain,LTrain,XTest,YTest,LTest,MDBEparam);
-                case 'FDCH'
-                    fprintf('......%s start...... \n\n', 'FDCH');
-                    FDCHparam = param;
-                    eva_info_ =evaluate_FDCH(XTrain,YTrain,LTrain,XTest,YTest,LTest,FDCHparam);
-                case 'SCRATCH'
-                    fprintf('......%s start...... \n\n', 'SCRATCH');
-                    SDMFHparam = param;
-                    eva_info_ =evaluate_SCRATCH(XTrain,YTrain,LTrain,XTest,YTest,LTest,SDMFHparam);
-                case 'LCMFH'
-                    fprintf('......%s start...... \n\n', 'LCMFH');
-                    LCMFHparam = param;
-                    eva_info_ =evaluate_LCMFH(XTrain,YTrain,LTrain,XTest,YTest,LTest,LCMFHparam);
-                case 'DLFH'
-                    fprintf('......%s start...... \n\n', 'DLFH');
-                    DLFHparam = param;
-                    eva_info_ =evaluate_DLFH(XTrain,YTrain,LTrain,XTest,YTest,LTest,DLFHparam);
-                case 'SRLCH'
-                    fprintf('......%s start...... \n\n', 'SRLCH');
-                    SRLCHparam = param;
-                    eva_info_ =evaluate_SRLCH(XTrain,YTrain,LTrain,XTest,YTest,LTest,SRLCHparam);
-            end
+                end
             eva_info{jj,ii} = eva_info_;
             clear eva_info_
         end
